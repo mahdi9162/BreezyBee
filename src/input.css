@@ -1,0 +1,9 @@
+@import 'tailwindcss';
+
+.montserrat-font {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.poppins-font {
+  font-family: 'Poppins', sans-serif;
+}
