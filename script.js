@@ -138,7 +138,7 @@ const successFunction = (position) => {
 };
 
 const errorFunction = (error) => {
-  alert('Location access denied');
+  alert(`ভাই দে না! লোকেশন এক্সেস দিলে কিচ্ছুই হইবো না ভাই! দে না ভাই! 🥹 কসম ভাই বিশ্বাস কর!😩`);
 };
 
 const locationTrack = async (lat, lon) => {

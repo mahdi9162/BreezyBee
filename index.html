@@ -26,7 +26,7 @@
       rel="stylesheet"
     />
   </head>
-  <body class="flex justify-center items-center montserrat-font bg-[url(../images/bg3.png)] min-h-screen bg-cover">
+  <body class="min-height: 100vh flex justify-center items-center montserrat-font bg-[url(../images/bg3.png)] min-h-screen bg-cover">
     <section
       class="p-10 border-4 border-white/20 bg-white/10 rounded-3xl w-[90%] max-w-xl backdrop-blur-lg backdrop-saturate-150 shadow-[0_8px_40px_rgba(0,0,0,0.25)"
     >
@@ -55,7 +55,7 @@
                   </svg>
                   <input
                     id="input-field"
-                    class="input focus:outline-none focus:ring-0 border-none"
+                    class="input focus:outline-none px-2 md:px-3 focus:ring-0 border-none"
                     type="search"
                     placeholder="Enter City Name"
                     required
@@ -82,10 +82,10 @@
           </figure>
           <!-- City And Celsius -->
           <div class="mt-8">
-            <!-- City -->
-            <h1 id="city-name" class=" error-class text-center text-5xl text-blue-100 font-semibold"></h1>
+            <!-- City Name-->
+            <h1 id="city-name" class=" error-class text-center text-3xl md:text-5xl text-blue-100 font-semibold"></h1>
             <!-- Celsious -->
-            <p class=" error-class poppins-font text-center text-5xl text-blue-100 font-bold mt-8 mb-1.5">
+            <p class=" error-class poppins-font text-center text-4xl md:text-5xl text-blue-100 font-bold mt-4 md:mt-8 mb-1.5">
               <span id="celsius-display"></span>
               °C
             </p>
