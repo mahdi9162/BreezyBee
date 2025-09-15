@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="h-screen">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,7 +9,7 @@
     <!-- CSS Link -->
     <link rel="stylesheet" href="./src/output.css" />
     <!-- Fev -->
-    <link rel="shortcut icon" href="./images/BreezyBee Fev.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="./images/breezyBee-removebg-preview.png" type="image/x-icon" />
     <!-- Font Awesome CDN -->
     <link
       rel="stylesheet"
@@ -26,65 +26,110 @@
       rel="stylesheet"
     />
   </head>
-  <body class="flex justify-center items-center montserrat-font bg-[url(../images/bg.png)] min-h-screen bg-cover">
+  <body class="flex justify-center items-center montserrat-font bg-[url(../images/bg3.png)] min-h-screen bg-cover">
     <section
-      class="p-10 h-[70%] border-4 border-white/20 bg-white/10 rounded-3xl w-[90%] max-w-xl backdrop-blur-lg backdrop-saturate-150 shadow-[0_8px_40px_rgba(0,0,0,0.25)"
+      class="p-10 border-4 border-white/20 bg-white/10 rounded-3xl w-[90%] max-w-xl backdrop-blur-lg backdrop-saturate-150 shadow-[0_8px_40px_rgba(0,0,0,0.25)"
     >
       <!-- Main Card Div -->
-      <div>
+      <div class="relative">
+        <!-- Logo -->
+        <figure class="w-10 absolute -top-6 -left-6"><img class="w-full" src="./images/breezyBee-removebg-preview.png" alt="" /></figure>
         <!-- Name Section -->
         <div class="flex flex-col justify-center items-center">
           <h1 class="text-3xl font-bold text-blue-100">BreezyBee</h1>
           <p class="text-blue-200 poppins-font mt-0.5 mb-6">A Cute Little Weather Web App</p>
         </div>
-        <!-- Search Section -->
+        <!-- Search Input Section -->
         <div class="flex justify-center">
-          <div class="join">
-            <div>
-              <label
-                class="input rounded-tl-lg rounded-bl-lg input-bordered border-transparent focus-within:outline-blue-300 focus-within:outline-1"
-              >
-                <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none" stroke="currentColor">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <path d="m21 21-4.3-4.3"></path>
-                  </g>
-                </svg>
-                <input class="input focus:outline-none focus:ring-0 border-none" type="search" placeholder="Enter City Name" required />
-              </label>
+          <form id="form" action="">
+            <div class="join">
+              <div>
+                <label
+                  class="input rounded-tl-lg rounded-bl-lg input-bordered border-transparent focus-within:outline-blue-300 focus-within:outline-1"
+                >
+                  <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none" stroke="currentColor">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <path d="m21 21-4.3-4.3"></path>
+                    </g>
+                  </svg>
+                  <input
+                    id="input-field"
+                    class="input focus:outline-none focus:ring-0 border-none"
+                    type="search"
+                    placeholder="Enter City Name"
+                    required
+                  />
+                </label>
+              </div>
+              <button id="search-btn" class="btn btn-info rounded-tr-lg rounded-br-lg">Search</button>
             </div>
-            <button class="btn btn-info rounded-tr-lg rounded-br-lg">Search</button>
-          </div>
+          </form>
         </div>
-        <!-- Weather Output Section -->
+        <!-- Weather Output Card Section -->
         <div
-          class="p-5 my-8 border border-white/20 bg-white/10 backdrop-blur-lg backdrop-saturate-150 w-[70%] h-80 rounded-3xl shadow-xl mx-auto"
+          id="weather-output-card"
+          class="relative hover:translate-y-1 hover:scale-[1.01] transition-all duration-500 md:p-5 p-4 my-8 border border-white/20 bg-white/10 backdrop-blur-lg backdrop-saturate-150 md:w-[70%] w-full rounded-3xl shadow-xl mx-auto"
         >
-          <!-- City And Celcious -->
-          <div>
-            <h1 class="leading-relaxed text-center text-3xl text-blue-100 font-semibold">London</h1>
-            <p class="poppins-font text-center text-5xl text-blue-100 font-bold my-6">15°C</p>
-            <p class="text-center text-lg text-blue-100">Mostly Cloudy</p>
-            <figure><img src="" alt=""></figure>
+          <!-- Error Messege -->
+          <figure id="error-404" class="hidden">
+            <img src="./images/error-cloud.png" alt="" />
+            <img class="w-32 mx-auto mt-5" src="./images/error-404.png" alt="" />
+          </figure>
+          <figure id="city-error" class="hidden mt-14">
+            <img src="./images/error-cloud.png" alt="" />
+            <img class="w-32 mx-auto mt-5" src="./images/./city-error.png" alt="" />
+          </figure>
+          <!-- City And Celsius -->
+          <div class="mt-8">
+            <!-- City -->
+            <h1 id="city-name" class=" error-class text-center text-5xl text-blue-100 font-semibold"></h1>
+            <!-- Celsious -->
+            <p class=" error-class poppins-font text-center text-5xl text-blue-100 font-bold mt-8 mb-1.5">
+              <span id="celsius-display"></span>
+              °C
+            </p>
+            <!-- Feels Like -->
+            <p class=" error-class text-center opacity-80 text-sm text-blue-100">
+              Feels Like
+              <span id="feels-like"></span>
+              °C
+            </p>
+            <!-- Loading -->
+            <div class="flex justify-center">
+              <span id="loading" class="loading loading-bars loading-xl hidden"></span>
+            </div>
+            <!-- Weather Icon -->
+            <figure id="display-weather-icon" class="error-class"></figure>
+            <!-- Weather Description -->
+            <p id="weather-descrip" class=" error-class text-center text-2xl font-semibold text-blue-100"></p>
           </div>
           <!-- Humidity And Wind -->
-          <div class="flex justify-between mt-20">
-            <p class="text-sm text-blue-100 font-semibold poppins-font">
+          <div class=" flex justify-between md:items-center mt-16">
+            <!-- Humidity -->
+            <p class="error-class text-sm text-blue-100 opacity-80 text-center font-semibold poppins-font">
               Humidity
-              <span>72</span>
-              %
+              <span class="block md:inline">
+                <span id="display-humidity"></span>
+                %
+              </span>
             </p>
-            <p class="text-sm text-blue-100 font-semibold poppins-font">
+            <!-- Wind -->
+            <p class="error-class text-sm text-blue-100 text-center opacity-80 font-semibold poppins-font">
               Wind Speed
-              <span>10</span>
-              inch
+              <span class="block">
+                <span id="display-wind-speed"></span>
+                km/h
+              </span>
             </p>
           </div>
         </div>
+        <!-- Current Location -->
         <div class="text-center">
-          <button class="text-blue-100 font-semibold p-3 rounded-full bg-blue-400">Current Location Weather</button>
+          <button id="current-location" class="text-blue-100 hover:translate-x-1 hover:scale-[1.02] transition-all duration-500 font-semibold py-3 cursor-pointer shadow-lg px-4 rounded-full bg-blue-400">Current Location Weather</button>
         </div>
       </div>
     </section>
+    <script src="./script.js"></script>
   </body>
 </html>
